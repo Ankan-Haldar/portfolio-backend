@@ -6,7 +6,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---------------- SECURITY ----------------
 SECRET_KEY = 'django-insecure--l@gh46d)gv*bkxc4v$cvtr*y&m9r7gu%@=r+76ugfmvi5c8)e'
-
 DEBUG = False
 
 ALLOWED_HOSTS = [
@@ -30,7 +29,7 @@ INSTALLED_APPS = [
 
 # ---------------- MIDDLEWARE ----------------
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # MUST be first
+    'corsheaders.middleware.CorsMiddleware',  # MUST BE FIRST
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
@@ -88,15 +87,18 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# ---------------- CORS ----------------
+# ---------------- CORS (FIXED) ----------------
 CORS_ALLOWED_ORIGINS = [
+    "https://ankanhaldar.vercel.app",
     "https://portfolio-frontend-ruddy-two.vercel.app",
+    "https://portfolio-frontend-git-main-ankan-haldars-projects.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-# ---------------- CSRF ----------------
+# ---------------- CSRF (FIXED) ----------------
 CSRF_TRUSTED_ORIGINS = [
+    "https://ankanhaldar.vercel.app",
     "https://portfolio-frontend-ruddy-two.vercel.app",
     "https://portfolio-backend-ww34.onrender.com",
 ]
@@ -104,7 +106,6 @@ CSRF_TRUSTED_ORIGINS = [
 # ---------------- STATIC ----------------
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ---------------- MEDIA ----------------
@@ -114,5 +115,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # ---------------- EXTRA ----------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Fix HTTPS proxy issues on Render
+# Fix HTTPS proxy issue on Render
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
