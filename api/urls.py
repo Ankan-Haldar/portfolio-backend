@@ -1,9 +1,7 @@
 from django.urls import path
-from django.http import JsonResponse
-
-def test(request):
-    return JsonResponse({"status": "working"})
+from .views import ProjectAPI,SkillAPI
 
 urlpatterns = [
-    path('projects/', test),
+    path('projects/', ProjectAPI.as_view()),
+    path('skills/', SkillAPI.as_view()),
 ]
